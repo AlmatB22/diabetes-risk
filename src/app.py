@@ -88,7 +88,7 @@ app.layout = dbc.Container([
             html.A(
                 dbc.Row(
                     [
-                        (dbc.NavbarBrand("Smart Reccomedner Diabetes Risk reccomender", className="text-center")),
+                        (dbc.NavbarBrand("Recommendation Framework for Online Stratification of Diabetes Risk", className="text-center")),
                     ],
                     align="center",
                     
