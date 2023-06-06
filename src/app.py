@@ -16,7 +16,12 @@ import joblib
 app = Dash(__name__, external_stylesheets=[dbc.themes.COSMO])
 server = app.server
 
-df_all = pd.read_csv("src/diabetes_data.csv")
+url_dataset = 'https://raw.githubusercontent.com/AlmatB22/diabetes_data/master/diabetes_data.csv'
+
+df_all = pd.read_csv(url_dataset,sep=",")
+
+df_all.head()
+
 df_all['gender'].replace(['Male', 'Female'], [1,0], inplace=True)
 
 Y_col = 'class' # this is output column
@@ -162,7 +167,7 @@ def update_graph(mode,id):
         sdf_train = sdf_train.sort_values('shap_values',ascending=False)  
         sdf_train['Feature'] = sdf_train.index
         prediction = model.predict(X_test.iloc[[id], :])
-        figure =px.histogram(sdf_train,x = 'Feature', y = 'shap_values')
+        figure =px.histogram(sdf_train,x = 'Feature', y = 'shap_values', title= "SHAP Explanation ")
         if prediction[0] == 0:
             output_text = 'There is no diabetes risk'
         else:
