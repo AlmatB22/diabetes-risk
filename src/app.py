@@ -12,6 +12,10 @@ import plotly.express as px
 import pickle
 import joblib
 
+
+app = Dash(__name__, external_stylesheets=[dbc.themes.COSMO])
+server = app.server
+
 df_all = pd.read_csv("src/diabetes_data.csv")
 df_all['gender'].replace(['Male', 'Female'], [1,0], inplace=True)
 
@@ -69,8 +73,6 @@ fd.rename(columns={0: 'shap_values'}, inplace=True, errors='raise')
  
 
 
-app = Dash(__name__, external_stylesheets=[dbc.themes.COSMO])
-server = app.server
 
 app.layout = dbc.Container([
 
