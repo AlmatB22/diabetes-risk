@@ -34,10 +34,10 @@ cat_columns = ['gender']
 categorical_features = [1]
 
 
-model = pickle.load(open('src/model_pkl', 'rb'))
+model = pickle.load(open('model_pkl', 'rb'))
 
 
-explainer = joblib.load('src/explainer.bz2')
+explainer = joblib.load('explainer.bz2')
 
 shap_values = explainer.shap_values(Pool(X_test, y_test, cat_features=categorical_features))
 d2 = pd.DataFrame(columns = ['age',	'gender', 'polyuria', 'polydipsia', 'sudden_weight_loss', 'weakness', 'polyphagia', 'genital_thrush', 'visual_blurring', 'itching', 'irritability', 'delayed_healing', 'partial_paresis', 'muscle_stiffness', 'alopecia', 'obesity'])
